@@ -1,16 +1,15 @@
-import type { INodeType, INodeTypeDescription } from 'n8n-workflow';
-// import { oldVersionNotice } from '../../utils/descriptions';
-// import { imageFields, imageOperations } from './ImageDescription';
-// import { textFields, textOperations } from './TextDescription';
-// import { chatFields, chatOperations } from './ChatDescription';
+import type {
+	INodeType,
+	INodeTypeDescription,
+} from 'n8n-workflow';
+import { browserFields, browserOperations } from './BrowserDescription.node';
 
 export class Yank implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Yank Studio',
-		name: 'Yank',
-		// hidden: true,
+		name: 'yankStudio',
 		icon: 'file:yank.png',
-		group: ['transform'],
+		group: ['output'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
 		description: 'Consume Yank Studio',
@@ -19,18 +18,7 @@ export class Yank implements INodeType {
 		},
 		inputs: ['main'],
 		outputs: ['main'],
-		// credentials: [
-		// 	{
-		// 		name: 'openAiApi',
-		// 		required: true,
-		// 	},
-		// ],
-		// requestDefaults: {
-		// 	ignoreHttpStatusErrors: true,
-		// 	baseURL: 'https://api.openai.com',
-		// },
 		properties: [
-			// oldVersionNotice,
 			{
 				displayName: 'Resource',
 				name: 'resource',
@@ -38,29 +26,23 @@ export class Yank implements INodeType {
 				noDataExpression: true,
 				options: [
 					{
-						name: 'Chat',
-						value: 'chat',
+						name: 'Browser',
+						value: 'browser',
 					},
 					{
-						name: 'Image',
-						value: 'image',
+						name: 'File',
+						value: 'file',
 					},
 					{
-						name: 'Text',
-						value: 'text',
+						name: 'Ocr',
+						value: 'ocr',
 					},
 				],
-				default: 'text',
+				default: 'browser',
 			},
 
-			// ...chatOperations,
-			// ...chatFields,
-
-			// ...imageOperations,
-			// ...imageFields,
-
-			// ...textOperations,
-			// ...textFields,
-		],
+			...browserOperations,
+			...browserFields
+		]
 	};
 }
