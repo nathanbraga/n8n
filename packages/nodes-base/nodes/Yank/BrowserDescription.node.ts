@@ -49,12 +49,12 @@ export const browserOperations: INodeProperties[] = [
 
 export const browserFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
-	/*                                bucket:create                               */
+	/*                                Browser:Open                               */
 	/* -------------------------------------------------------------------------- */
 	{
 		displayName: 'Browser',
 		name: 'browser',
-		type: 'collection',
+		type: 'options',
 		required: true,
 		default: '',
 		displayOptions: {
@@ -74,12 +74,26 @@ export const browserFields: INodeProperties[] = [
             {
 				displayName: 'Firefox',
 				name: 'firefox',
-				value: 'firefox',
+				value: 'Firefox',
 				default: false,
 				description: 'Firefox WebDriver',
 			},
         ],
 		description: 'Select browser that you want to use.',
+	},
+	{
+		displayName: 'URL Access',
+		name: 'urlAccess',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['browser'],
+				operation: ['urlAccess'],
+			},
+		},
+		description: 'Put your url.',
 	},
 	// {
 	// 	displayName: 'Additional Fields',

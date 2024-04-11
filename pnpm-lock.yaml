@@ -176,7 +176,7 @@ importers:
     dependencies:
       axios:
         specifier: 1.6.7
-        version: 1.6.7(debug@3.2.7)
+        version: 1.6.7(debug@4.3.4)
 
   packages/@n8n/nodes-langchain:
     dependencies:
@@ -473,7 +473,7 @@ importers:
         version: 1.11.0
       axios:
         specifier: 1.6.7
-        version: 1.6.7(debug@3.2.7)
+        version: 1.6.7(debug@4.3.4)
       basic-auth:
         specifier: 2.0.1
         version: 2.0.1
@@ -804,7 +804,7 @@ importers:
         version: 1.11.0
       axios:
         specifier: 1.6.7
-        version: 1.6.7(debug@3.2.7)
+        version: 1.6.7(debug@4.3.4)
       concat-stream:
         specifier: 2.0.0
         version: 2.0.0
@@ -1061,7 +1061,7 @@ importers:
         version: 10.5.0(vue@3.4.21)
       axios:
         specifier: 1.6.7
-        version: 1.6.7(debug@3.2.7)
+        version: 1.6.7(debug@4.3.4)
       chart.js:
         specifier: ^4.4.0
         version: 4.4.0
@@ -1388,6 +1388,9 @@ importers:
       rss-parser:
         specifier: 3.13.0
         version: 3.13.0
+      selenium-webdriver:
+        specifier: ^4.19.0
+        version: 4.19.0
       semver:
         specifier: ^7.5.4
         version: 7.5.4
@@ -1526,7 +1529,7 @@ importers:
         version: 0.15.2
       axios:
         specifier: 1.6.7
-        version: 1.6.7(debug@3.2.7)
+        version: 1.6.7(debug@4.3.4)
       callsites:
         specifier: 3.1.0
         version: 3.1.0
@@ -8985,7 +8988,7 @@ packages:
       ts-dedent: 2.2.0
       type-fest: 2.19.0
       vue: 3.4.21(typescript@5.4.2)
-      vue-component-type-helpers: 2.0.7
+      vue-component-type-helpers: 2.0.12
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -11485,7 +11488,7 @@ packages:
   /axios@1.6.7:
     resolution: {integrity: sha512-/hDJGff6/c7u0hDkvkGxR/oy6CbCs8ziCsC7SqmhjfozqiJGc8Z11wrv9z9lYfY4K8l+H9TpjcMDX0xOZmx+RA==}
     dependencies:
-      follow-redirects: 1.15.6(debug@3.2.7)
+      follow-redirects: 1.15.6(debug@4.3.4)
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -12803,11 +12806,6 @@ packages:
     engines: {node: '>= 0.6'}
     dependencies:
       safe-buffer: 5.2.1
-
-  /content-type@1.0.4:
-    resolution: {integrity: sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==}
-    engines: {node: '>= 0.6'}
-    dev: false
 
   /content-type@1.0.5:
     resolution: {integrity: sha512-nTjqfcBFEipKdXCv4YDQWCfmcLZKm81ldF0pAopTvyrFGVbcR6P/VAAd5G7N+0tTr8QqiU0tFadD6FK4NtJwOA==}
@@ -23015,6 +23013,18 @@ packages:
       parseley: 0.12.1
     dev: false
 
+  /selenium-webdriver@4.19.0:
+    resolution: {integrity: sha512-8XHW8m9V2XN2/SC1kr4bWzMtGvjmKUEZ6S0UBoDBqonhmwEIzKOLbzhanBd08HCOg1s1O0XrDWCD71NnA8Zt0g==}
+    engines: {node: '>= 14.20.0'}
+    dependencies:
+      jszip: 3.10.1
+      tmp: 0.2.3
+      ws: 8.16.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
+
   /semver-greatest-satisfied-range@1.1.0:
     resolution: {integrity: sha512-Ny/iyOzSSa8M5ML46IAx3iXc6tfOsYU2R4AXi2UpHk60Zrgyq6eqPj/xiOfS0rRl/iiQ/rdJkVjw/5cdUyCntQ==}
     engines: {node: '>= 0.10'}
@@ -23543,9 +23553,6 @@ packages:
   /sqlite3@5.1.7:
     resolution: {integrity: sha512-GGIyOiFaG+TUra3JIfkI/zGP8yZYLPQ0pl1bH+ODjiX57sPhrLU5sQJn1y9bDKZUFYkX1crlrPfSYt0BKKdkog==}
     requiresBuild: true
-    peerDependenciesMeta:
-      node-gyp:
-        optional: true
     dependencies:
       bindings: 1.5.0
       node-addon-api: 7.1.0
@@ -24358,6 +24365,11 @@ packages:
     engines: {node: '>=8.17.0'}
     dependencies:
       rimraf: 3.0.2
+
+  /tmp@0.2.3:
+    resolution: {integrity: sha512-nZD7m9iCPC5g0pYmcaxogYKggSfLsdxl8of3Q/oIbqCqLLIO9IAF0GWjX1z9NZRHPiXv8Wex4yDCaZsgEw0Y8w==}
+    engines: {node: '>=14.14'}
+    dev: false
 
   /tmpl@1.0.5:
     resolution: {integrity: sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==}
@@ -25663,8 +25675,8 @@ packages:
     resolution: {integrity: sha512-0vOfAtI67UjeO1G6UiX5Kd76CqaQ67wrRZiOe7UAb9Jm6GzlUr/fC7CV90XfwapJRjpCMaZFhv1V0ajWRmE9Dg==}
     dev: true
 
-  /vue-component-type-helpers@2.0.7:
-    resolution: {integrity: sha512-7e12Evdll7JcTIocojgnCgwocX4WzIYStGClBQ+QuWPinZo/vQolv2EMq4a3lg16TKfwWafLimG77bxb56UauA==}
+  /vue-component-type-helpers@2.0.12:
+    resolution: {integrity: sha512-iVJugClQdu3ZyF0N4CF3Egi+gWYfnxlIPPGtFXZG29rF3kQIuziP+k7rVGCCHiibIOQ1SlspKjrh+LRYzMpwTA==}
     dev: true
 
   /vue-demi@0.14.5(vue@3.4.21):
@@ -26233,6 +26245,19 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
+
+  /ws@8.16.0:
+    resolution: {integrity: sha512-HS0c//TP7Ina87TfiPUz1rQzMhHrl/SG2guqRcTOIUYD2q8uhUdNHZYJUaQ8aTGPzCh+c6oawMKW35nFl1dxyQ==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: false
 
   /xml-crypto@3.0.1:
     resolution: {integrity: sha512-7XrwB3ujd95KCO6+u9fidb8ajvRJvIfGNWD0XLJoTWlBKz+tFpUzEYxsN+Il/6/gHtEs1RgRh2RH+TzhcWBZUw==}
