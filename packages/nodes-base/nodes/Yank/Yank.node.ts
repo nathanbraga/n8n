@@ -8,7 +8,7 @@ import type {
 } from 'n8n-workflow';
 import { browserFields, browserOperations } from './BrowserDescription.node';
 
-const { Builder } = require('selenium-webdriver');
+const { Builder, By} = require('selenium-webdriver');
 var driver = new Builder().forBrowser('chrome');
 
 export class Yank implements INodeType {
@@ -70,7 +70,7 @@ export class Yank implements INodeType {
 						const browser = this.getNodeParameter('browser', i);
 
 						if (browser === 'google') {
-							driver = await driver.build()
+							driver = await new Builder().forBrowser('chrome').build()
 						}
 
 						const executionData = this.helpers.constructExecutionMetaData(
@@ -84,9 +84,38 @@ export class Yank implements INodeType {
 
 						try{
 							const urlAccess = this.getNodeParameter('urlAccess', i);
-							console.log(urlAccess)
-							await driver.get(''+urlAccess)
-							await driver.get('https://www.4devs.com.br/gerador_de_nicks')
+							await driver.get(urlAccess);
+						} catch (error) {
+							console.log(error)
+							throw error;
+						}
+						
+						const executionData = this.helpers.constructExecutionMetaData(
+							this.helpers.returnJsonArray({ success: true }),
+							{ itemData: { item: i } },
+						);
+						returnData.push(...executionData);
+					}
+
+					if (operation === 'findByXpathAndClick') {
+						try{
+							const xpath = this.getNodeParameter('findByXpathAndClick', i);
+							await driver.findElement(By.xpath(xpath)).click();
+						} catch (error) {
+							console.log(error)
+							throw error;
+						}
+						
+						const executionData = this.helpers.constructExecutionMetaData(
+							this.helpers.returnJsonArray({ success: true }),
+							{ itemData: { item: i } },
+						);
+						returnData.push(...executionData);
+					}
+
+					if (operation === 'close') {
+						try{
+							await driver.quit();
 						} catch (error) {
 							console.log(error)
 							throw error;

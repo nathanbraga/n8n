@@ -31,10 +31,10 @@ export const browserOperations: INodeProperties[] = [
 				action: 'Close a browser',
 			},
 			{
-				name: 'Find By Xpath',
-				value: 'findByXpath',
-				description: 'Find By Xpath',
-				action: 'Find By Xpath',
+				name: 'Find By Xpath and Click',
+				value: 'findByXpathAndClick',
+				description: 'Find By Xpath and Click',
+				action: 'Find By Xpath and Click',
 			},
 			{
 				name: 'Find By CssSelector',
@@ -94,6 +94,34 @@ export const browserFields: INodeProperties[] = [
 			},
 		},
 		description: 'Put your url.',
+	},
+	{
+		displayName: 'Find By Xpath and Click',
+		name: 'findByXpathAndClick',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['browser'],
+				operation: ['findByXpathAndClick'],
+			},
+		},
+		description: 'Put your url.',
+	},
+	{
+		displayName: 'Close Browser',
+		name: 'close',
+		type: 'hidden',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['browser'],
+				operation: ['close'],
+			},
+		},
+		// description: 'Put your Xpath.',
 	},
 	// {
 	// 	displayName: 'Additional Fields',
