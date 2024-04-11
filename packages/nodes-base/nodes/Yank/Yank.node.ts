@@ -75,6 +75,7 @@ export class Yank implements INodeType {
 
 						if (browser === 'google') {
 							driver = await new Builder().forBrowser('chrome').build()
+							driver.manage().window().maximize();
 						}
 
 						const executionData = this.helpers.constructExecutionMetaData(
