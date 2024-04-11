@@ -1,6 +1,6 @@
 import type { INodeProperties } from 'n8n-workflow';
 
-export const browserOperations: INodeProperties[] = [
+export const fileOperations: INodeProperties[] = [
 	{
 		displayName: 'Operation',
 		name: 'operation',
@@ -8,33 +8,33 @@ export const browserOperations: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
-				resource: ['browser'],
+				resource: ['file'],
 			},
 		},
 		options: [
 			{
-				name: 'Open',
-				value: 'open',
-				description: 'Open a browser',
-				action: 'Open a browser',
+				name: 'Read text file',
+				value: 'readTextFile',
+				description: 'Read text file',
+				action: 'Read text file',
 			},
             {
-				name: 'Url Access',
-				value: 'urlAccess',
-				description: 'Url Access',
-				action: 'Url Access',
+				name: 'Read excel file',
+				value: 'readExcelFile',
+				description: 'Read excel file',
+				action: 'Read excel file',
 			},
 			{
-				name: 'Close',
-				value: 'close',
-				description: 'Close a browser',
-				action: 'Close a browser',
+				name: 'Write text file',
+				value: 'writeTextFile',
+				description: 'Write text file',
+				action: 'Write text file',
 			},
 			{
-				name: 'Find By Xpath and Click',
-				value: 'findByXpathAndClick',
-				description: 'Find By Xpath and Click',
-				action: 'Find By Xpath and Click',
+				name: 'Write excel file',
+				value: 'writeExcelFile',
+				description: 'Write excel file',
+				action: 'Write excel file',
 			},
 			{
 				name: 'Find By CssSelector',
@@ -43,43 +43,43 @@ export const browserOperations: INodeProperties[] = [
 				action: 'Find By CssSelector',
 			},
 		],
-		default: 'open',
+		default: 'readTextFile',
 	},
 ];
 
-export const browserFields: INodeProperties[] = [
+export const fileFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
 	/*                                Browser:Open                               */
 	/* -------------------------------------------------------------------------- */
 	{
-		displayName: 'Browser',
+		displayName: 'File',
 		name: 'browser',
 		type: 'options',
 		required: true,
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['browser'],
-				operation: ['open'],
+				resource: ['file'],
+				operation: ['readTextFile'],
 			},
 		},
         options:[
             {
-				displayName: 'Google',
-				name: 'google',
-				value: 'google',
+				displayName: 'Text',
+				name: 'text',
+				value: 'text',
 				default: true,
-				description: 'Google WebDriver',
+				description: 'Text file',
 			},
             {
-				displayName: 'Firefox',
-				name: 'firefox',
-				value: 'Firefox',
+				displayName: 'Excel',
+				name: 'excel',
+				value: 'excel',
 				default: false,
-				description: 'Firefox WebDriver',
+				description: 'Excel file',
 			},
         ],
-		description: 'Select browser that you want to use.',
+		description: 'Select file type that you want to read.',
 	},
 
 	/* -------------------------------------------------------------------------- */
