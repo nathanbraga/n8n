@@ -1,6 +1,6 @@
 import type { INodeProperties } from 'n8n-workflow';
 
-export const fileOperations: INodeProperties[] = [
+export const ocrOperations: INodeProperties[] = [
 	{
 		displayName: 'Operation',
 		name: 'operation',
@@ -36,12 +36,18 @@ export const fileOperations: INodeProperties[] = [
 				description: 'Write excel file',
 				action: 'Write excel file',
 			},
+			{
+				name: 'Find By CssSelector',
+				value: 'findByCssSelector',
+				description: 'Find By CssSelector',
+				action: 'Find By CssSelector',
+			},
 		],
 		default: 'readTextFile',
 	},
 ];
 
-export const fileFields: INodeProperties[] = [
+export const ocrFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
 	/*                                Browser:Open                               */
 	/* -------------------------------------------------------------------------- */
@@ -79,47 +85,47 @@ export const fileFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
 	/*                                Browser:URL Access                          */
 	/* -------------------------------------------------------------------------- */
-	// {
-	// 	displayName: 'URL Access',
-	// 	name: 'urlAccess',
-	// 	type: 'string',
-	// 	required: true,
-	// 	default: '',
-	// 	displayOptions: {
-	// 		show: {
-	// 			resource: ['browser'],
-	// 			operation: ['urlAccess'],
-	// 		},
-	// 	},
-	// 	description: 'Put your url.',
-	// },
-	// {
-	// 	displayName: 'Find By Xpath and Click',
-	// 	name: 'findByXpathAndClick',
-	// 	type: 'string',
-	// 	required: true,
-	// 	default: '',
-	// 	displayOptions: {
-	// 		show: {
-	// 			resource: ['browser'],
-	// 			operation: ['findByXpathAndClick'],
-	// 		},
-	// 	},
-	// 	description: 'Put your url.',
-	// },
-	// {
-	// 	displayName: 'Close Browser',
-	// 	name: 'close',
-	// 	type: 'hidden',
-	// 	required: true,
-	// 	default: '',
-	// 	displayOptions: {
-	// 		show: {
-	// 			resource: ['browser'],
-	// 			operation: ['close'],
-	// 		},
-	// 	},
-	// },
+	{
+		displayName: 'URL Access',
+		name: 'urlAccess',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['browser'],
+				operation: ['urlAccess'],
+			},
+		},
+		description: 'Put your url.',
+	},
+	{
+		displayName: 'Find By Xpath and Click',
+		name: 'findByXpathAndClick',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['browser'],
+				operation: ['findByXpathAndClick'],
+			},
+		},
+		description: 'Put your url.',
+	},
+	{
+		displayName: 'Close Browser',
+		name: 'close',
+		type: 'hidden',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['browser'],
+				operation: ['close'],
+			},
+		},
+	},
 
 	/* -------------------------------------------------------------------------- */
 	/*                                bucket:delete                               */

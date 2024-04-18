@@ -8,15 +8,17 @@ import type {
 } from 'n8n-workflow';
 import { browserFields, browserOperations } from './BrowserDescription.node';
 import { fileFields, fileOperations } from './FileDescription.node';
+import { captchaFields, captchaOperations } from './CaptchaDescription.node';
+import { captchaResolveApiRequest } from './YankWSFunctions';
 
-const { Builder, By} = require('selenium-webdriver');
+const { Builder, By } = require('selenium-webdriver');
 var driver = new Builder().forBrowser('chrome');
 
 export class Yank implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Yank Studio',
 		name: 'yankStudio',
-		icon: 'file:yank.png',
+		icon: 'file:Yank-Logo-Degrade-simbolo.png',
 		group: ['output'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
@@ -45,6 +47,10 @@ export class Yank implements INodeType {
 						name: 'Ocr',
 						value: 'ocr',
 					},
+					{
+						name: 'Captcha',
+						value: 'captcha',
+					},
 				],
 				default: 'browser',
 			},
@@ -54,6 +60,9 @@ export class Yank implements INodeType {
 
 			...fileOperations,
 			...fileFields,
+
+			...captchaOperations,
+			...captchaFields,
 		]
 	};
 
@@ -64,7 +73,7 @@ export class Yank implements INodeType {
 		let responseData;
 		const resource = this.getNodeParameter('resource', 0);
 		const operation = this.getNodeParameter('operation', 0);
-		
+
 		for (let i = 0; i < items.length; i++) {
 			let headers: IDataObject = {};
 			try {
@@ -87,14 +96,14 @@ export class Yank implements INodeType {
 
 					if (operation === 'urlAccess') {
 
-						try{
+						try {
 							const urlAccess = this.getNodeParameter('urlAccess', i);
 							await driver.get(urlAccess);
 						} catch (error) {
 							console.log(error)
 							throw error;
 						}
-						
+
 						const executionData = this.helpers.constructExecutionMetaData(
 							this.helpers.returnJsonArray({ success: true }),
 							{ itemData: { item: i } },
@@ -103,14 +112,14 @@ export class Yank implements INodeType {
 					}
 
 					if (operation === 'findByXpathAndClick') {
-						try{
+						try {
 							const xpath = this.getNodeParameter('findByXpathAndClick', i);
 							await driver.findElement(By.xpath(xpath)).click();
 						} catch (error) {
 							console.log(error)
 							throw error;
 						}
-						
+
 						const executionData = this.helpers.constructExecutionMetaData(
 							this.helpers.returnJsonArray({ success: true }),
 							{ itemData: { item: i } },
@@ -119,18 +128,56 @@ export class Yank implements INodeType {
 					}
 
 					if (operation === 'close') {
-						try{
+						try {
 							await driver.quit();
 						} catch (error) {
 							console.log(error)
 							throw error;
 						}
-						
+
 						const executionData = this.helpers.constructExecutionMetaData(
 							this.helpers.returnJsonArray({ success: true }),
 							{ itemData: { item: i } },
 						);
 						returnData.push(...executionData);
+					}
+				}
+
+				if (resource === 'captcha') {
+
+					if (operation === 'captchaResolve') {
+						let base64String = "";
+
+						const urlXpath = this.getNodeParameter('captchaXpath', i);
+						const company = this.getNodeParameter('company', i);
+						const password = this.getNodeParameter('password', i);
+						const user = this.getNodeParameter('user', i);
+
+						const captchaElement = await driver.findElement(By.id(urlXpath));
+
+						const base64Image = await captchaElement.takeScreenshot(true);
+
+						console.log(base64Image);
+
+						const responseData = await captchaResolveApiRequest.call(
+							this,
+							'POST',
+							"/ws/api/v1/captcha/simpleversion",
+							"http://workflow.yanksolutions.com.br",
+							{
+								empresa: company,
+								usuario: user,
+								senha: password,
+								imageBase64: base64Image
+							},
+							{
+								'cache-control': 'no-cache',
+								'Content-Type': 'application/x-www-form-urlencoded',
+							}
+						);
+
+						console.log(responseData);
+
 					}
 				}
 			} catch (error) {
@@ -153,4 +200,5 @@ export class Yank implements INodeType {
 			return [returnData];
 		}
 	}
+
 }

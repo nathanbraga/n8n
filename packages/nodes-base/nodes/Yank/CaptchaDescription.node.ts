@@ -1,6 +1,6 @@
 import type { INodeProperties } from 'n8n-workflow';
 
-export const fileOperations: INodeProperties[] = [
+export const captchaOperations: INodeProperties[] = [
 	{
 		displayName: 'Operation',
 		name: 'operation',
@@ -8,118 +8,81 @@ export const fileOperations: INodeProperties[] = [
 		noDataExpression: true,
 		displayOptions: {
 			show: {
-				resource: ['file'],
+				resource: ['captcha'],
 			},
 		},
 		options: [
 			{
-				name: 'Read text file',
-				value: 'readTextFile',
-				description: 'Read text file',
-				action: 'Read text file',
-			},
-            {
-				name: 'Read excel file',
-				value: 'readExcelFile',
-				description: 'Read excel file',
-				action: 'Read excel file',
-			},
-			{
-				name: 'Write text file',
-				value: 'writeTextFile',
-				description: 'Write text file',
-				action: 'Write text file',
-			},
-			{
-				name: 'Write excel file',
-				value: 'writeExcelFile',
-				description: 'Write excel file',
-				action: 'Write excel file',
+				name: 'Captcha Resolve',
+				value: 'captchaResolve',
+				description: 'Captcha resolve',
+				action: 'Captcha resolve',
 			},
 		],
-		default: 'readTextFile',
+		default: 'captchaResolve',
 	},
 ];
 
-export const fileFields: INodeProperties[] = [
+export const captchaFields: INodeProperties[] = [
 	/* -------------------------------------------------------------------------- */
-	/*                                Browser:Open                               */
+	/*                                Browser:URL Access                          */
 	/* -------------------------------------------------------------------------- */
 	{
-		displayName: 'File',
-		name: 'browser',
-		type: 'options',
+		displayName: 'Image Captcha Xpath',
+		name: 'captchaXpath',
+		type: 'string',
 		required: true,
 		default: '',
 		displayOptions: {
 			show: {
-				resource: ['file'],
-				operation: ['readTextFile'],
+				resource: ['captcha'],
+				operation: ['captchaResolve'],
 			},
 		},
-        options:[
-            {
-				displayName: 'Text',
-				name: 'text',
-				value: 'text',
-				default: true,
-				description: 'Text file',
-			},
-            {
-				displayName: 'Excel',
-				name: 'excel',
-				value: 'excel',
-				default: false,
-				description: 'Excel file',
-			},
-        ],
-		description: 'Select file type that you want to read.',
+		description: 'Put your image url.',
 	},
-
-	/* -------------------------------------------------------------------------- */
-	/*                                Browser:URL Access                          */
-	/* -------------------------------------------------------------------------- */
-	// {
-	// 	displayName: 'URL Access',
-	// 	name: 'urlAccess',
-	// 	type: 'string',
-	// 	required: true,
-	// 	default: '',
-	// 	displayOptions: {
-	// 		show: {
-	// 			resource: ['browser'],
-	// 			operation: ['urlAccess'],
-	// 		},
-	// 	},
-	// 	description: 'Put your url.',
-	// },
-	// {
-	// 	displayName: 'Find By Xpath and Click',
-	// 	name: 'findByXpathAndClick',
-	// 	type: 'string',
-	// 	required: true,
-	// 	default: '',
-	// 	displayOptions: {
-	// 		show: {
-	// 			resource: ['browser'],
-	// 			operation: ['findByXpathAndClick'],
-	// 		},
-	// 	},
-	// 	description: 'Put your url.',
-	// },
-	// {
-	// 	displayName: 'Close Browser',
-	// 	name: 'close',
-	// 	type: 'hidden',
-	// 	required: true,
-	// 	default: '',
-	// 	displayOptions: {
-	// 		show: {
-	// 			resource: ['browser'],
-	// 			operation: ['close'],
-	// 		},
-	// 	},
-	// },
+	{
+		displayName: 'User',
+		name: 'user',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['captcha'],
+				operation: ['captchaResolve'],
+			},
+		},
+		description: 'Put your user.',
+	},
+	{
+		displayName: 'Password',
+		name: 'password',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['captcha'],
+				operation: ['captchaResolve'],
+			},
+		},
+		description: 'Put your password.',
+	},
+	{
+		displayName: 'Company',
+		name: 'company',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['captcha'],
+				operation: ['captchaResolve'],
+			},
+		},
+		description: 'Put your company.',
+	},
 
 	/* -------------------------------------------------------------------------- */
 	/*                                bucket:delete                               */

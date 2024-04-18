@@ -166,7 +166,7 @@ export default defineComponent({
 			useTemplatesStore,
 		),
 		logoPath(): string {
-			return this.basePath + (this.isCollapsed ? 'static/logo/collapsed.svg' : this.uiStore.logo);
+			return this.basePath + (this.isCollapsed ? 'static/logo/collapsed.png' : this.uiStore.logo);
 		},
 		hasVersionUpdates(): boolean {
 			return (
