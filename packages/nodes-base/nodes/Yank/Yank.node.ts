@@ -10,6 +10,7 @@ import { browserFields, browserOperations } from './BrowserDescription.node';
 import { fileFields, fileOperations } from './FileDescription.node';
 import { captchaFields, captchaOperations } from './CaptchaDescription.node';
 import { captchaResolveApiRequest } from './YankWSFunctions';
+import { imageFields } from '../Bannerbear/ImageDescription';
 
 const { Builder, By } = require('selenium-webdriver');
 var driver = new Builder().forBrowser('chrome');
@@ -159,17 +160,22 @@ export class Yank implements INodeType {
 
 						console.log(base64Image);
 
+						var bodyData = "empresa=" + company + "&usuario=" + user + "&senha=" + password + "&imageBase64=data:image/png;base64," + base64Image;
+						console.log(bodyData);
+
+
 						const responseData = await captchaResolveApiRequest.call(
 							this,
 							'POST',
 							"/ws/api/v1/captcha/simpleversion",
 							"http://workflow.yanksolutions.com.br",
-							{
-								empresa: company,
-								usuario: user,
-								senha: password,
-								imageBase64: base64Image
-							},
+							bodyData,
+							// {
+							// 	empresa: company,
+							// 	usuario: user,
+							// 	senha: password,
+							// 	imageBase64: base64Image
+							// },
 							{
 								'cache-control': 'no-cache',
 								'Content-Type': 'application/x-www-form-urlencoded',
