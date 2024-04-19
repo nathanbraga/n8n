@@ -42,6 +42,12 @@ export const browserOperations: INodeProperties[] = [
 				description: 'Find By CssSelector',
 				action: 'Find By CssSelector',
 			},
+			{
+				name: 'Send Keys to Text Box',
+				value: 'sendKeysToTextBox',
+				description: 'Send Keys to Text Box',
+				action: 'Send Keys to Text Box',
+			},
 		],
 		default: 'open',
 	},
@@ -126,6 +132,35 @@ export const browserFields: INodeProperties[] = [
 			},
 		},
 	},
+	{
+		displayName: 'Text Box Id',
+		name: 'textBoxId',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['browser'],
+				operation: ['sendKeysToTextBox'],
+			},
+		},
+		description: 'Put text box id.',
+	},
+	{
+		displayName: 'Message to Text Box',
+		name: 'messageToTextBox',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['browser'],
+				operation: ['sendKeysToTextBox'],
+			},
+		},
+		description: 'Put text box.',
+	},
+
 
 	/* -------------------------------------------------------------------------- */
 	/*                                bucket:delete                               */

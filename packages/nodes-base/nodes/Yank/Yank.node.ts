@@ -142,6 +142,24 @@ export class Yank implements INodeType {
 						);
 						returnData.push(...executionData);
 					}
+
+					if (operation === 'sendKeysToTextBox') {
+						const textBoxId = this.getNodeParameter('textBoxId', i);
+						const messageToTextBox = this.getNodeParameter('messageToTextBox', i);
+
+						try {
+							await driver.findElement(By.id(textBoxId)).sendKeys(messageToTextBox);
+						} catch (error) {
+							console.log(error)
+							throw error;
+						}
+
+						const executionData = this.helpers.constructExecutionMetaData(
+							this.helpers.returnJsonArray({ success: true }),
+							{ itemData: { item: i } },
+						);
+						returnData.push(...executionData);
+					}
 				}
 
 				if (resource === 'captcha') {
