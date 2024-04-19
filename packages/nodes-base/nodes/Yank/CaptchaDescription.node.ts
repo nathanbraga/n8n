@@ -83,6 +83,34 @@ export const captchaFields: INodeProperties[] = [
 		},
 		description: 'Put your company.',
 	},
+	{
+		displayName: 'Text Box',
+		name: 'textBox',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['captcha'],
+				operation: ['captchaResolve'],
+			},
+		},
+		description: 'Put your text box.',
+	},
+	{
+		displayName: 'Click Button',
+		name: 'clickButton',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: ['captcha'],
+				operation: ['captchaResolve'],
+			},
+		},
+		description: 'Put your button id.',
+	},
 
 	/* -------------------------------------------------------------------------- */
 	/*                                bucket:delete                               */

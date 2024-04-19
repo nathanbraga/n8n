@@ -9,7 +9,7 @@ import type {
 import { browserFields, browserOperations } from './BrowserDescription.node';
 import { fileFields, fileOperations } from './FileDescription.node';
 import { captchaFields, captchaOperations } from './CaptchaDescription.node';
-import { captchaResolveApiRequest } from './YankWSFunctions';
+import { captchaResolveApiRequest, captchaResolveApiRequestV2 } from './YankWSFunctions';
 import { imageFields } from '../Bannerbear/ImageDescription';
 
 const { Builder, By } = require('selenium-webdriver');
@@ -147,43 +147,29 @@ export class Yank implements INodeType {
 				if (resource === 'captcha') {
 
 					if (operation === 'captchaResolve') {
-						let base64String = "";
 
 						const urlXpath = this.getNodeParameter('captchaXpath', i);
 						const company = this.getNodeParameter('company', i);
 						const password = this.getNodeParameter('password', i);
 						const user = this.getNodeParameter('user', i);
+						const textbox = this.getNodeParameter('textBox', i);
+						const clickButton = this.getNodeParameter('clickButton', i);
 
 						const captchaElement = await driver.findElement(By.id(urlXpath));
 
 						const base64Image = await captchaElement.takeScreenshot(true);
 
-						console.log(base64Image);
-
-						var bodyData = "empresa=" + company + "&usuario=" + user + "&senha=" + password + "&imageBase64=data:image/png;base64," + base64Image;
-						console.log(bodyData);
-
-
-						const responseData = await captchaResolveApiRequest.call(
+						const responseData = await captchaResolveApiRequestV2.call(
 							this,
-							'POST',
-							"/ws/api/v1/captcha/simpleversion",
-							"http://workflow.yanksolutions.com.br",
-							bodyData,
-							// {
-							// 	empresa: company,
-							// 	usuario: user,
-							// 	senha: password,
-							// 	imageBase64: base64Image
-							// },
-							{
-								'cache-control': 'no-cache',
-								'Content-Type': 'application/x-www-form-urlencoded',
-							}
+							'' + company,
+							'' + user,
+							'' + password,
+							'' + base64Image
 						);
 
-						console.log(responseData);
+						await driver.findElement(By.id(textbox)).sendKeys(responseData);
 
+						await driver.findElement(By.id(clickButton)).click();
 					}
 				}
 			} catch (error) {
