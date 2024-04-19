@@ -9,7 +9,7 @@ import type {
 import { browserFields, browserOperations } from './BrowserDescription.node';
 import { fileFields, fileOperations } from './FileDescription.node';
 import { captchaFields, captchaOperations } from './CaptchaDescription.node';
-import { captchaResolveApiRequest, captchaResolveApiRequestV2 } from './YankWSFunctions';
+import { captchaResolveApiRequestV2 } from './YankWSFunctions';
 import { imageFields } from '../Bannerbear/ImageDescription';
 
 const { Builder, By } = require('selenium-webdriver');
