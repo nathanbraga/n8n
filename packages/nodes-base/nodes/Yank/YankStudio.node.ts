@@ -15,7 +15,7 @@ import { imageFields } from '../Bannerbear/ImageDescription';
 const { Builder, By } = require('selenium-webdriver');
 var driver = new Builder().forBrowser('chrome');
 
-export class Yank implements INodeType {
+export class YankStudio implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Yank Studio',
 		name: 'yankStudio',
@@ -29,6 +29,12 @@ export class Yank implements INodeType {
 		},
 		inputs: ['main'],
 		outputs: ['main'],
+		credentials: [
+			{
+				name: 'yankStudioWS',
+				required: true,
+			},
+		],
 		properties: [
 			{
 				displayName: 'Resource',
