@@ -4,42 +4,42 @@
 	// Primary tokens
 
 	// Text
-	--color-text-dark: var(--prim-gray-40);
-	--color-text-base: var(--prim-gray-200);
-	--color-text-light: var(--prim-gray-320);
-	--color-text-lighter: var(--prim-gray-740);
-	--color-text-xlight: var(--prim-gray-820);
-	--color-text-danger: var(--prim-color-alt-c-tint-150);
+	--color-text-dark: #fff;
+	--color-text-base: 	#fff;
+	--color-text-light: #fff;
+	--color-text-lighter: #fff;
+	--color-text-xlight: #fff;
+	--color-text-danger: #fff;
 
 	// Foreground
-	--color-foreground-xdark: var(--prim-gray-200);
-	--color-foreground-dark: var(--prim-gray-420);
-	--color-foreground-base: var(--prim-gray-670);
-	--color-foreground-light: var(--prim-gray-740);
-	--color-foreground-xlight: var(--prim-gray-820);
+	--color-foreground-xdark: #8e95ca;
+	--color-foreground-dark: #8e95ca;
+	--color-foreground-base: #8e95ca;
+	--color-foreground-light: #8e95ca;
+	--color-foreground-xlight: #8e95ca;
 
 	// Background
-	--color-background-dark: var(--prim-gray-70);
-	--color-background-medium: var(--prim-gray-540);
-	--color-background-base: var(--prim-gray-670);
-	--color-background-light: var(--prim-gray-820);
-	--color-background-xlight: var(--prim-gray-740);
+	--color-background-dark: #fff;
+	--color-background-medium: #fff;
+	--color-background-base: #fff;
+	--color-background-light: #fff;
+	--color-background-xlight: #2c19b2;
 
-	--box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 6px rgba(0, 0, 0, 0.1);
-	--box-shadow-dark: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 6px rgba(0, 0, 0, 0.2);
-	--box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+	--box-shadow-base: #fff;
+	--box-shadow-dark: #fff;
+	--box-shadow-light: #fff;
 
 	// Secondary tokens
 
 	// LangChain
-	--color-lm-chat-messages-background: var(--prim-gray-820);
+	--color-lm-chat-messages-background: #FF00FF;
 	--color-lm-chat-bot-background: var(--prim-gray-540);
 	--color-lm-chat-bot-border: var(--prim-gray-490);
 	--color-lm-chat-user-background: var(--prim-color-alt-a-shade-100);
 	--color-lm-chat-user-border: var(--prim-color-alt-a);
 
 	// Canvas
-	--color-canvas-background: var(--prim-gray-820);
+	--color-canvas-background: #000000;
 	--color-canvas-background-h: var(--prim-gray-h); // Used for connectors labels background
 	--color-canvas-background-s: 1%;
 	--color-canvas-background-l: 18%;
@@ -51,7 +51,7 @@
 	--node-type-main-color: var(--prim-gray-420);
 
 	// Sticky
-	--color-sticky-background: var(--prim-color-alt-d-shade-700);
+	--color-sticky-background: #FF00FF;
 	--color-sticky-border: var(--prim-color-alt-d-shade-600);
 	--color-sticky-font: var(--prim-gray-40);
 	--color-sticky-code-font: var(--prim-color-secondary-tint-300);
@@ -116,21 +116,21 @@
 	--color-variables-usage-syntax-bg: var(--prim-color-alt-a-alpha-025);
 
 	// Button primary
-	--color-button-primary-disabled-font: var(--prim-gray-0-alpha-025);
+	--color-button-primary-disabled-font: #FF00FF;
 	--color-button-primary-disabled-border: transparent;
-	--color-button-primary-disabled-background: var(--prim-color-primary-shade-300);
+	--color-button-primary-disabled-background: #2c19b2;
 
 	// Button secondary
-	--color-button-secondary-border: var(--prim-gray-420);
+	--color-button-secondary-border: #000000;
 
 	// Text button
-	--color-text-button-secondary-font: var(--prim-gray-320);
+	--color-text-button-secondary-font: #FF00FF;
 
 	// Table
-	--color-table-header-background: var(--prim-gray-740);
-	--color-table-row-background: var(--prim-gray-820);
-	--color-table-row-even-background: var(--prim-gray-800);
-	--color-table-row-hover-background: var(--prim-gray-740);
+	--color-table-header-background: #2c19b2;
+	--color-table-row-background: #2c19b2;
+	--color-table-row-even-background: #2c19b2;
+	--color-table-row-hover-background: #2c19b2;
 
 	// Notification
 	--color-notification-background: var(--prim-gray-740);
@@ -139,7 +139,7 @@
 	--execution-card-background-hover: var(--color-foreground-base);
 
 	// NDV
-	--color-run-data-background: var(--prim-gray-800);
+	--color-run-data-background: #FF00FF;
 	--color-ndv-droppable-parameter: var(--prim-color-primary);
 	--color-ndv-droppable-parameter-background: var(--prim-color-primary-alpha-010);
 	--color-ndv-droppable-parameter-active-background: var(--prim-color-alt-a-alpha-015);
@@ -153,7 +153,7 @@
 
 	// Callout
 	--color-callout-info-border: var(--prim-gray-420);
-	--color-callout-info-background: var(--prim-gray-740);
+	--color-callout-info-background: #FF00FF
 	--color-callout-info-font: var(--prim-gray-0);
 	--color-callout-success-border: var(--color-success);
 	--color-callout-success-background: var(--prim-color-alt-a-alpha-025);

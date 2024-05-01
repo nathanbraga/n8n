@@ -18,7 +18,7 @@
 		<n8n-menu :items="mainMenuItems" :collapsed="isCollapsed" @select="handleSelect">
 			<template #header>
 				<div :class="$style.logo">
-					<img :src="logoPath" data-test-id="n8n-logo" :class="$style.icon" alt="n8n" />
+					<img :src="logoPath" data-test-id="n8n-logo" :class="$style.icon" alt="Yank Studio" />
 				</div>
 			</template>
 
@@ -166,7 +166,7 @@ export default defineComponent({
 			useTemplatesStore,
 		),
 		logoPath(): string {
-			return this.basePath + (this.isCollapsed ? 'static/logo/collapsed.png' : this.uiStore.logo);
+			return this.basePath + (this.isCollapsed ? 'static/logo/logo-yank-branco.svg' : 'static/logo/logo-yank-branco.svg');
 		},
 		hasVersionUpdates(): boolean {
 			return (
@@ -498,20 +498,15 @@ export default defineComponent({
 		height: $header-height;
 		display: flex;
 		align-items: center;
-		padding: var(--spacing-xs);
-
-		img {
-			position: relative;
-			left: 1px;
-			height: 20px;
-		}
+		justify-content: center
 	}
 
 	&.sideMenuCollapsed {
 		width: $sidebar-width;
 
-		.logo img {
-			left: 0;
+		.logo {
+			justify-content: center;
+			align-items: center;
 		}
 	}
 }
